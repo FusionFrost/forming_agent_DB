@@ -1,20 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.574,=C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.916,C:\Users\Pavel\Desktop\OpenZip\openzip.dfm=C:\Users\Pavel\Desktop\OpenZip\Unit3.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.561,=C:\Users\Pavel\Documents\RAD Studio\Projects\Project3.res</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.398,C:\Users\Pavel\Desktop\OpenZip\Unit3.cpp=C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.073,C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompressZip.c=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.916,C:\Users\Pavel\Desktop\OpenZip\Unit3.dfm=C:\Users\Pavel\Desktop\OpenZip\openzip.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.349,=C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompress.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.848,=C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompressZip.c</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.211,C:\Users\Pavel\Desktop\OpenZip\Project3.cbproj=C:\Users\Pavel\Documents\RAD Studio\Projects\Project3.cbproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.916,C:\Users\Pavel\Desktop\OpenZip\openzip.h=C:\Users\Pavel\Desktop\OpenZip\Unit3.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.398,C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.dfm=C:\Users\Pavel\Desktop\OpenZip\Unit3.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.346,=C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompress.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.068,C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompress.cpp=</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.916,C:\Users\Pavel\Desktop\OpenZip\openzip.cpp=C:\Users\Pavel\Desktop\OpenZip\Unit3.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.398,C:\Users\Pavel\Desktop\OpenZip\Unit3.h=C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.349,=C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompress.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.010,C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompress.h=</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.398,C:\Users\Pavel\Desktop\OpenZip\Unit3.dfm=C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.561,=C:\Users\Pavel\Documents\RAD Studio\Projects\Project3.res</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.073,C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompressZip.c=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.398,C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.cpp=C:\Users\Pavel\Desktop\OpenZip\Unit3.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.574,=C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.916,C:\Users\Pavel\Desktop\OpenZip\Unit3.h=C:\Users\Pavel\Desktop\OpenZip\openzip.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.916,C:\Users\Pavel\Desktop\OpenZip\Unit3.cpp=C:\Users\Pavel\Desktop\OpenZip\openzip.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.211,C:\Users\Pavel\Documents\RAD Studio\Projects\Project3.cbproj=C:\Users\Pavel\Desktop\OpenZip\Project3.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.398,C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.h=C:\Users\Pavel\Desktop\OpenZip\Unit3.h</Transaction>
+    <Transaction>2016.04.07 17:02:26.113,=C:\Users\Pavel\Desktop\OpenZip\Unit1.cpp</Transaction>
+    <Transaction>2016.04.07 17:02:55.941,C:\Users\Pavel\Desktop\OpenZip\archiv.cpp=C:\Users\Pavel\Desktop\OpenZip\Unit1.cpp</Transaction>
+    <Transaction>2016.04.07 17:02:55.941,C:\Users\Pavel\Desktop\OpenZip\archiv.h=C:\Users\Pavel\Desktop\OpenZip\Unit1.h</Transaction>
   </Transactions>
 </BorlandProject>

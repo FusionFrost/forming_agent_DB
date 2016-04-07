@@ -1,1 +1,0 @@
-C:\\Users\\Pavel\\Desktop\\OpenZip\\7z\\7za.exe x C:\\Users\\Pavel\\Desktop\\OpenZip\\7z\\oi.7z -o C:\\Users\\Pavel\\Desktop\\OpenZip\\7z\\

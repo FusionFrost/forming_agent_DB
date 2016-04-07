@@ -67,7 +67,7 @@
         <Multithreaded>true</Multithreaded>
         <ProjectType>CppVCLApplication</ProjectType>
         <IncludePath>EasyMfcZipCompression_src\;..\..\..\Desktop\OpenZip\;$(IncludePath)</IncludePath>
-        <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;vclZipForged19.lib;vclx.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <OutputExt>exe</OutputExt>
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
@@ -114,6 +114,11 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <_TCHARMapping>char</_TCHARMapping>
+        <LinkPackageStatics>vclZipForged19.lib</LinkPackageStatics>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;vclx.bpi</LinkPackageImports>
+        <VerInfo_Locale>1033</VerInfo_Locale>
         <Defines>_DEBUG;$(Defines)</Defines>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
@@ -129,8 +134,12 @@
         <Defines>NDEBUG;$(Defines)</Defines>
     </PropertyGroup>
     <ItemGroup>
+        <CppCompile Include="archiv.cpp">
+            <DependentOn>archiv.h</DependentOn>
+            <BuildOrder>3</BuildOrder>
+        </CppCompile>
         <CppCompile Include="openzip.cpp">
-            <Form>Form3</Form>
+            <Form>frmMain</Form>
             <DependentOn>openzip.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
@@ -195,6 +204,10 @@
                     <ProjectProperties Name="ManagePaths">True</ProjectProperties>
                     <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
                 </ProjectProperties>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k190.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp190.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Platforms>
                 <Platform value="Win32">True</Platform>
