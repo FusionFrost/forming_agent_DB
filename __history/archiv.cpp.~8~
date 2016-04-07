@@ -1,0 +1,49 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "archiv.h"
+//---------------------------------------------------------------------------
+
+/*!
+
+	en: funcktion extracting filse(recursion) in current directory ru: Функция распаковки файлов(рекурсивной) в указанном каталоге.
+	en: first argument: Path to current files 					   ru: первый аргумент: Путь до файлов(Папка, где лежат все файлы)
+	en: Second argument: Path where to put the file                ru: второй аргумент: Путь куда положить распакованные файлы
+*/
+void Archiv::ExtractFiles(AnsiString CurDir,AnsiString putDir)
+{
+	AnsiString cDir = CurDir; //! Запоминаем указанную директорию
+	STARTUPINFO StartInfo = {sizeof(TStartupInfo)};
+	PROCESS_INFORMATION ProcInfo;
+	LPCSTR t;
+	StartInfo.cb= sizeof(StartInfo);
+	StartInfo.dwFlags = STARTF_USESHOWWINDOW;
+	StartInfo.wShowWindow= SW_HIDE;
+
+	if(cDir == NULL)        //! Если пустая - директория по умолчанию
+	{
+		char buffer[1000];
+		GetCurrentDirectory(sizeof(buffer),buffer);
+		cDir = buffer;
+
+		AnsiString CmdLine= cDir + "\\7z\\7za.exe x " + curDir +"\\*.7z -r -o" + curDir + "\\res\\";
+	}else
+	{
+		AnsiString CmdLine= cDir + "\\7z\\7za.exe x " + curDir +"\\*.7z -r -o" + curDir + "\\res\\";
+	}
+
+
+
+	if(!CreateProcess(NULL, CmdLine.c_str(),
+			NULL,NULL,false,
+			CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,
+			NULL,NULL, &StartInfo, &ProcInfo))
+	ShowMessage("Ошибка");
+	else
+	{
+	if (WaitForSingleObject(ProcInfo.hProcess,1000)== WAIT_TIMEOUT)
+	CloseHandle(ProcInfo.hProcess);
+	}
+}
+#pragma package(smart_init)

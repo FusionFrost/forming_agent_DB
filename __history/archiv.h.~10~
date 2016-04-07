@@ -1,0 +1,16 @@
+//---------------------------------------------------------------------------
+
+#ifndef archivH
+#define archivH
+//---------------------------------------------------------------------------
+class Archiv
+{
+private:
+	String curDir;											//! Текущая директория, где лежат файлы(Которую укажет пользователь)
+	String putDir;      									//! Директория, куда кладутся распакованные файлы
+public:
+	void ExtractFiles(AnsiString CurDic,AnsiString putDic); //! Распаковка файлов в указанной папке
+	void putCurDir(AnsiString cDir){ curDir = cDir; }
+	String getCurDir() { return curDir; }
+};
+#endif
