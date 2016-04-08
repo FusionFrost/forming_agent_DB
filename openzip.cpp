@@ -24,7 +24,6 @@ __fastcall TfrmMain::~TfrmMain()
 
 void TfrmMain::call()
 {
-	arv->setCK(true);
 	arv->clearPutDir();
 	arv->ExtractFiles(arv->getCurDir(),arv->getPutDir());
 
