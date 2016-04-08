@@ -13,18 +13,27 @@ TfrmMain *frmMain;
 __fastcall TfrmMain::TfrmMain(TComponent* Owner)
     : TForm(Owner)
 {
-	arv = new Archiv;
+	arv = new Archiv();
 }
+
+__fastcall TfrmMain::~TfrmMain()
+{
+	delete arv;
+}
+
+
 void TfrmMain::call()
 {
+	arv->setCK(true);
+	arv->clearPutDir();
 	arv->ExtractFiles(arv->getCurDir(),arv->getPutDir());
 
 }
 void __fastcall TfrmMain::Button1Click(TObject *Sender)
 {
 	String dir;
-	SelectDirectory("Выбор каталога","", dir );
-	arv->putCurDir(dir);
+	SelectDirectory("Выбор каталога","", dir ); 	//! Выбираем папку
+	arv->putCurDir(dir);                            //! Кладем директорию в curDir
 }
 
 
@@ -33,8 +42,8 @@ void __fastcall TfrmMain::Button1Click(TObject *Sender)
 void __fastcall TfrmMain::Button2Click(TObject *Sender)
 {
 	String dir;
-	SelectDirectory("Выбор каталога","", dir );
-	arv->putPutDir(dir);
+	SelectDirectory("Выбор каталога","", dir );   	//! Выбираем папку
+	arv->putPutDir(dir);                          	//! Кладем директорию в putDir
 }
 //---------------------------------------------------------------------------
 

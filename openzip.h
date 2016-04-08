@@ -31,6 +31,8 @@ private:	// User declarations
 public:		// User declarations
     Archiv *arv;
 	__fastcall TfrmMain(TComponent* Owner);
+	__fastcall ~TfrmMain();
+
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TfrmMain *frmMain;
