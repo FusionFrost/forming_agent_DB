@@ -1,23 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.529,=C:\Users\Pavel\Desktop\OpenZip\zlib\lib\zdllbor.lib</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.927,C:\Users\Pavel\Desktop\OpenZip\zlib\lib\zdllbor.lib=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.234,=C:\Users\Pavel\Desktop\OpenZip\zlib\zlib1.dll</Transaction>
     <Transaction>1899.12.30 00:00:00.000.398,C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.dfm=C:\Users\Pavel\Desktop\OpenZip\Unit3.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.916,C:\Users\Pavel\Desktop\OpenZip\Unit3.dfm=C:\Users\Pavel\Desktop\OpenZip\openzip.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.211,C:\Users\Pavel\Documents\RAD Studio\Projects\Project3.cbproj=C:\Users\Pavel\Desktop\OpenZip\Project3.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.797,=C:\Users\Pavel\Desktop\OpenZip\zlib\lib\zdllbor.lib</Transaction>
     <Transaction>1899.12.30 00:00:00.000.941,C:\Users\Pavel\Desktop\OpenZip\archiv.cpp=C:\Users\Pavel\Desktop\OpenZip\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.859,=C:\Users\Pavel\Desktop\OpenZip\zlib\lib\zdllbor.lib</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.512,C:\Users\Pavel\Desktop\OpenZip\zlib\lib\zdllbor.lib=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.561,=C:\Users\Pavel\Documents\RAD Studio\Projects\Project3.res</Transaction>
     <Transaction>1899.12.30 00:00:00.000.349,=C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompress.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.346,=C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompress.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.068,C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompress.cpp=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.620,=C:\Users\Pavel\Desktop\OpenZip\zlib\include\zlib.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.505,C:\Users\Pavel\Desktop\OpenZip\zlib\zlib1.dll=</Transaction>
     <Transaction>1899.12.30 00:00:00.000.010,C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompress.h=</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.561,=C:\Users\Pavel\Documents\RAD Studio\Projects\Project3.res</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.941,C:\Users\Pavel\Desktop\OpenZip\archiv.h=C:\Users\Pavel\Desktop\OpenZip\Unit1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.574,=C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.916,C:\Users\Pavel\Desktop\OpenZip\Unit3.dfm=C:\Users\Pavel\Desktop\OpenZip\openzip.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.350,C:\Users\Pavel\Desktop\OpenZip\zlib\lib\zdll.lib=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.211,C:\Users\Pavel\Documents\RAD Studio\Projects\Project3.cbproj=C:\Users\Pavel\Desktop\OpenZip\Project3.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.916,C:\Users\Pavel\Desktop\OpenZip\Unit3.cpp=C:\Users\Pavel\Desktop\OpenZip\openzip.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.854,=C:\Users\Pavel\Desktop\OpenZip\zlib\lib\zdll.lib</Transaction>
     <Transaction>1899.12.30 00:00:00.000.916,C:\Users\Pavel\Desktop\OpenZip\Unit3.h=C:\Users\Pavel\Desktop\OpenZip\openzip.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.113,=C:\Users\Pavel\Desktop\OpenZip\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.941,C:\Users\Pavel\Desktop\OpenZip\archiv.h=C:\Users\Pavel\Desktop\OpenZip\Unit1.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.398,C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.cpp=C:\Users\Pavel\Desktop\OpenZip\Unit3.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.574,=C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.604,=C:\Users\Pavel\Desktop\OpenZip\zlib\include\zconf.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.848,=C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompressZip.c</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.073,C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompressZip.c=</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.916,C:\Users\Pavel\Desktop\OpenZip\Unit3.cpp=C:\Users\Pavel\Desktop\OpenZip\openzip.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.398,C:\Users\Pavel\Documents\RAD Studio\Projects\Unit3.h=C:\Users\Pavel\Desktop\OpenZip\Unit3.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.073,C:\Users\Pavel\Desktop\OpenZip\EasyMfcZipCompression_src\MyCompressZip.c=</Transaction>
+    <Transaction>2016.04.11 11:10:15.970,C:\Users\Pavel\Desktop\OpenZip\zlib\include\zlib.h=</Transaction>
+    <Transaction>2016.04.11 11:10:19.290,C:\Users\Pavel\Desktop\OpenZip\zlib\include\zconf.h=</Transaction>
+    <Transaction>2016.04.11 11:11:25.601,=C:\Users\Pavel\Desktop\OpenZip\Unit1.cpp</Transaction>
+    <Transaction>2016.04.11 11:11:40.525,C:\Users\Pavel\Desktop\OpenZip\pdf2txt.h=C:\Users\Pavel\Desktop\OpenZip\Unit1.h</Transaction>
+    <Transaction>2016.04.11 11:11:40.525,C:\Users\Pavel\Desktop\OpenZip\pdf2txt.cpp=C:\Users\Pavel\Desktop\OpenZip\Unit1.cpp</Transaction>
   </Transactions>
 </BorlandProject>

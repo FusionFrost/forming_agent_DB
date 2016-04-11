@@ -10,6 +10,7 @@
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.FileCtrl.hpp>
 
+#include "pdf2txt.h"
 #include "archiv.h"
 
 //---------------------------------------------------------------------------
@@ -29,6 +30,7 @@ private:	// User declarations
 	void call();
 
 public:		// User declarations
+	pdf2txt *PdfToTxt;
     Archiv *arv;
 	__fastcall TfrmMain(TComponent* Owner);
 	__fastcall ~TfrmMain();

@@ -61,12 +61,12 @@
         <VerInfo_Locale>1049</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
-        <ILINK_LibraryPath>EasyMfcZipCompression_src\;..\..\..\Desktop\OpenZip\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>zlib\include\;EasyMfcZipCompression_src\;..\..\..\Desktop\OpenZip\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <PackageImports>vclimg.bpi;vcl.bpi;vclx.bpi;dbrtl.bpi;Rave90VCL.bpi;bdertl.bpi;rtl.bpi;bcbie.bpi;xmlrtl.bpi;vclactnband.bpi;bcbsmp.bpi;svnui.bpi;svn.bpi;TeeUI.bpi;TeeDB.bpi;Tee.bpi;vcldb.bpi;vcldbx.bpi;vcltouch.bpi;dsnap.bpi;dsnapcon.bpi;vclib.bpi;ibxpress.bpi;adortl.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;inet.bpi;intrawebdb_110_150.bpi;Intraweb_110_150.bpi;vclie.bpi;websnap.bpi;webdsnap.bpi;inetdb.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;vclribbon.bpi;dbexpress.bpi;DbxCommonDriver.bpi;DataSnapIndy10ServerTransport.bpi;DataSnapProviderClient.bpi;DbxClientDriver.bpi;DataSnapClient.bpi;dbxcds.bpi;DataSnapServer.bpi;AzureCloud.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;DBXFirebirdDriver.bpi;DBXSybaseASEDriver.bpi;DBXSybaseASADriver.bpi;DBXOracleDriver.bpi;DBXMSSQLDriver.bpi;DBXInformixDriver.bpi;DBXDb2Driver.bpi;CodeSiteExpressVcl.bpi;$(PackageImports)</PackageImports>
         <LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
         <Multithreaded>true</Multithreaded>
         <ProjectType>CppVCLApplication</ProjectType>
-        <IncludePath>EasyMfcZipCompression_src\;..\..\..\Desktop\OpenZip\;$(IncludePath)</IncludePath>
+        <IncludePath>zlib\include\;EasyMfcZipCompression_src\;..\..\..\Desktop\OpenZip\;$(IncludePath)</IncludePath>
         <AllPackageLibs>rtl.lib;vcl.lib;vclZipForged19.lib;vclx.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <OutputExt>exe</OutputExt>
@@ -81,6 +81,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <ILINK_LibraryPath>C:\Users\Pavel\Desktop\OpenZip\zlib\lib\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
@@ -114,6 +115,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <IncludePath>C:\Users\Pavel\Desktop\OpenZip\zlib\include;$(IncludePath)</IncludePath>
         <_TCHARMapping>char</_TCHARMapping>
         <LinkPackageStatics>vclZipForged19.lib</LinkPackageStatics>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -143,12 +145,20 @@
             <DependentOn>openzip.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
+        <CppCompile Include="pdf2txt.cpp">
+            <DependentOn>pdf2txt.h</DependentOn>
+            <BuildOrder>5</BuildOrder>
+        </CppCompile>
         <CppCompile Include="Project3.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <ResFiles Include="Project3.res">
             <BuildOrder>1</BuildOrder>
         </ResFiles>
+        <LibFiles Include="zlib\lib\zdllbor.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>4</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
         <FormResources Include="openzip.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
