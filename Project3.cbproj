@@ -115,8 +115,8 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <IncludePath>C:\Users\Pavel\Desktop\OpenZip\zlib\include;$(IncludePath)</IncludePath>
         <_TCHARMapping>char</_TCHARMapping>
+        <IncludePath>C:\Users\Pavel\Desktop\OpenZip\zlib\include;$(IncludePath)</IncludePath>
         <LinkPackageStatics>vclZipForged19.lib</LinkPackageStatics>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <LinkPackageImports>rtl.bpi;vcl.bpi;vclx.bpi</LinkPackageImports>
@@ -155,11 +155,14 @@
         <ResFiles Include="Project3.res">
             <BuildOrder>1</BuildOrder>
         </ResFiles>
-        <LibFiles Include="zlib\lib\zdllbor.lib" Condition="'$(Platform)'=='Win32'">
-            <BuildOrder>4</BuildOrder>
-            <IgnorePath>true</IgnorePath>
-        </LibFiles>
+        <CppCompile Include="settings.cpp">
+            <Form>Setting</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>settings.h</DependentOn>
+            <BuildOrder>5</BuildOrder>
+        </CppCompile>
         <FormResources Include="openzip.dfm"/>
+        <FormResources Include="settings.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

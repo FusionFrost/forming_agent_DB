@@ -5,6 +5,15 @@
 #include "archiv.h"
 //---------------------------------------------------------------------------
 
+
+Archiv::Archiv()
+{
+	//! Получаем текущую директорию (в которой выполняется exe)
+	char buffer[1000];
+	GetCurrentDirectory(sizeof(buffer),buffer);
+	setDefaultDir(buffer);
+}
+
 /*!
 
 	en: funcktion extracting filse(recursion) in current directory ru: Функция распаковки файлов(рекурсивной) в указанном каталоге.
@@ -23,31 +32,14 @@ void Archiv::ExtractFiles(AnsiString CurDir,AnsiString putDir)
 	StartInfo.dwFlags = STARTF_USESHOWWINDOW;
 	StartInfo.wShowWindow= SW_HIDE;
 
-	char buffer[1000];
-	GetCurrentDirectory(sizeof(buffer),buffer);
-	AnsiString DefaultDir = buffer;
-
-	if(putDir == "")
-	{
-		putDir = DefaultDir + "\\res";
-	}
-
-	if(cDir == "")        //! Если пустая - директория по умолчанию
-	{
-		CmdLine_7z = DefaultDir + "\\7z\\7za.exe x " + DefaultDir +"\\Archivs\\*.7z -r -o" + DefaultDir + "\\res";
-		CmdLine_zip = DefaultDir + "\\7z\\7za.exe x " + DefaultDir +"\\Archivs\\*.zip -r -o" + DefaultDir + "\\res";
-		CmdLine_rar = DefaultDir + "\\WinRar\\Rar.exe x " + DefaultDir +"\\Archivs\\*.rar -r " + DefaultDir + "\\res";
-	}else
-	{
-		CmdLine_7z = DefaultDir + "\\7z\\7za.exe x " + cDir +"\\*.7z -r -o" + putDir;
-		CmdLine_zip = DefaultDir + "\\7z\\7za.exe x " + cDir +"\\*.zip -r -o" + putDir;
-		CmdLine_rar = DefaultDir + "\\WinRar\\Rar.exe x " + cDir +"\\*.rar -r " + putDir;
-	}
+	CmdLine_7z = DefaultDir + "\\7z\\7za.exe x " + cDir +"\\*.7z -r -o" + putDir;
+	CmdLine_zip = DefaultDir + "\\7z\\7za.exe x " + cDir +"\\*.zip -r -o" + putDir;
+	CmdLine_rar = DefaultDir + "\\WinRar\\Rar.exe x " + cDir +"\\*.rar -r " + putDir;
 
 	//! Для .7z
 	if(CreateProcess(NULL, CmdLine_7z.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
 	{
-		if (WaitForSingleObject(ProcInfo.hProcess,1000)== WAIT_TIMEOUT)
+		if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
 		{
 			CloseHandle(ProcInfo.hProcess);
 		}
@@ -59,7 +51,7 @@ void Archiv::ExtractFiles(AnsiString CurDir,AnsiString putDir)
 	//! Для .zip
 	if(CreateProcess(NULL, CmdLine_zip.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
 	{
-		if (WaitForSingleObject(ProcInfo.hProcess,1000)== WAIT_TIMEOUT)
+		if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
 		{
 			CloseHandle(ProcInfo.hProcess);
 		}
@@ -70,7 +62,7 @@ void Archiv::ExtractFiles(AnsiString CurDir,AnsiString putDir)
 	//! Для .rar
 	if(CreateProcess(NULL, CmdLine_rar.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
 	{
-		if (WaitForSingleObject(ProcInfo.hProcess,1000)== WAIT_TIMEOUT)
+		if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
 		{
 			CloseHandle(ProcInfo.hProcess);
 		}
@@ -79,18 +71,18 @@ void Archiv::ExtractFiles(AnsiString CurDir,AnsiString putDir)
 	{ShowMessage("Ошибка");}
 
 
-	TStringDynArray list = TDirectory::GetDirectories(DefaultDir + "\\res");
+	TStringDynArray list = TDirectory::GetDirectories(putDir);
 	if( list.Length != 0)
 	{
 		for(int i = 0; i < list.Length; i++)
 		{
-			ExtractFilesLite(list[i],DefaultDir + "\\res");
+			ExtractFilesLite(list[i],putDir);
 			Dir.Delete(list[i],true);
 		}
 	}
 
 	 ExtractFilesLite(putDir,putDir);
-	 DeleteFile("*.rar");
+
 
 }
 
@@ -106,31 +98,14 @@ void Archiv::ExtractFilesLite(AnsiString CurDir,AnsiString putDir)
 	StartInfo.dwFlags = STARTF_USESHOWWINDOW;
 	StartInfo.wShowWindow= SW_HIDE;
 
-	char buffer[1000];
-	GetCurrentDirectory(sizeof(buffer),buffer);
-	AnsiString DefaultDir = buffer;
-
-	if(putDir == "")
-	{
-		putDir = DefaultDir;
-	}
-
-	if(cDir == "")        //! Если пустая - директория по умолчанию
-	{
-		CmdLine_7z = DefaultDir + "\\7z\\7za.exe x " + DefaultDir +"\\Archivs\\*.7z -r -o" + DefaultDir + "\\res";
-		CmdLine_zip = DefaultDir + "\\7z\\7za.exe x " + DefaultDir +"\\Archivs\\*.zip -r -o" + DefaultDir + "\\res";
-		CmdLine_rar = DefaultDir + "\\WinRar\\Rar.exe x " + DefaultDir +"\\Archivs\\*.rar -r " + DefaultDir + "\\res";
-	}else
-	{
-		CmdLine_7z = DefaultDir + "\\7z\\7za.exe x " + cDir +"\\*.7z -r -o" + putDir;
-		CmdLine_zip = DefaultDir + "\\7z\\7za.exe x " + cDir +"\\*.zip -r -o" + putDir;
-		CmdLine_rar = DefaultDir + "\\WinRar\\Rar.exe x " + cDir +"\\*.rar -r " + putDir;
-	}
+	CmdLine_7z = DefaultDir + "\\7z\\7za.exe x " + cDir +"\\*.7z -r -o" + putDir;
+	CmdLine_zip = DefaultDir + "\\7z\\7za.exe x " + cDir +"\\*.zip -r -o" + putDir;
+	CmdLine_rar = DefaultDir + "\\WinRar\\Rar.exe x " + cDir +"\\*.rar -r " + putDir;
 
 	//! Для .7z
 	if(CreateProcess(NULL, CmdLine_7z.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
 	{
-		if (WaitForSingleObject(ProcInfo.hProcess,1000)== WAIT_TIMEOUT)
+		if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
 		{
 			CloseHandle(ProcInfo.hProcess);
 		}
@@ -142,7 +117,7 @@ void Archiv::ExtractFilesLite(AnsiString CurDir,AnsiString putDir)
 	//! Для .zip
 	if(CreateProcess(NULL, CmdLine_zip.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
 	{
-		if (WaitForSingleObject(ProcInfo.hProcess,1000)== WAIT_TIMEOUT)
+		if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
 		{
 			CloseHandle(ProcInfo.hProcess);
 		}
@@ -153,7 +128,7 @@ void Archiv::ExtractFilesLite(AnsiString CurDir,AnsiString putDir)
 	//! Для .rar
 	if(CreateProcess(NULL, CmdLine_rar.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
 	{
-		if (WaitForSingleObject(ProcInfo.hProcess,1000)== WAIT_TIMEOUT)
+		if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
 		{
 			CloseHandle(ProcInfo.hProcess);
 		}
@@ -161,21 +136,62 @@ void Archiv::ExtractFilesLite(AnsiString CurDir,AnsiString putDir)
 	}else
 	{ShowMessage("Ошибка");}
 
-
 }
 
 void Archiv::clearPutDir()
 {
 	if(putDir == "")
 	{
-		char buffer[1000];
-		GetCurrentDirectory(sizeof(buffer),buffer);
-		AnsiString DefaultDir = buffer;
-		DefaultDir = DefaultDir+"\\res";
 		Dir.Delete(DefaultDir,true);
 	}else
 	{
 		Dir.Delete(putDir,true);
+	}
+}
+
+void Archiv::deleteFiles()
+{
+	struct ffblk f;
+	register int done;
+
+	//! Удаляем все PDF
+	AnsiString s = putDir+"\*.pdf";
+	done = findfirst( s.c_str(), &f, 0);
+	while(!done)
+	{
+		s =  putDir + AnsiString(f.ff_name);
+		DeleteFile(s);
+		done = findnext(&f);
+	}
+
+	//! Удаляем все rar
+	s = putDir+"\*.rar";
+	done = findfirst( s.c_str(), &f, 0);
+	while(!done)
+	{
+		s =  putDir + AnsiString(f.ff_name);
+		DeleteFile(s);
+		done = findnext(&f);
+	}
+
+	//! Удаляем все zip
+	s = putDir+"\*.zip";
+	done = findfirst( s.c_str(), &f, 0);
+	while(!done)
+	{
+		s =  putDir + AnsiString(f.ff_name);
+		DeleteFile(s);
+		done = findnext(&f);
+	}
+
+	//! Удаляем все rar
+	s = putDir+"\*.7z";
+	done = findfirst( s.c_str(), &f, 0);
+	while(!done)
+	{
+		s =  putDir + AnsiString(f.ff_name);
+		DeleteFile(s);
+		done = findnext(&f);
 	}
 }
 #pragma package(smart_init)
