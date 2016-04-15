@@ -138,17 +138,6 @@ void Archiv::ExtractFilesLite(AnsiString CurDir,AnsiString putDir)
 
 }
 
-void Archiv::clearPutDir()
-{
-	if(putDir == "")
-	{
-		Dir.Delete(DefaultDir,true);
-	}else
-	{
-		Dir.Delete(putDir,true);
-	}
-}
-
 void Archiv::deleteFiles()
 {
 	struct ffblk f;
@@ -186,6 +175,21 @@ void Archiv::deleteFiles()
 
 	//! Удаляем все rar
 	s = putDir+"\*.7z";
+	done = findfirst( s.c_str(), &f, 0);
+	while(!done)
+	{
+		s =  putDir + AnsiString(f.ff_name);
+		DeleteFile(s);
+		done = findnext(&f);
+	}
+}
+void Archiv::deleteAllFiles()
+{
+	struct ffblk f;
+	register int done;
+
+	//! Удаляем все PDF
+	AnsiString s = putDir+"\*.*";
 	done = findfirst( s.c_str(), &f, 0);
 	while(!done)
 	{

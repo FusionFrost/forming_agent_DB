@@ -30,6 +30,6 @@ public:
 	void clearDir(){ curDir = ""; putDir = ""; }
 	void deleteFiles();
 
-	void clearPutDir();									//! Очистить putDir
+	void deleteAllFiles();
 };
 #endif

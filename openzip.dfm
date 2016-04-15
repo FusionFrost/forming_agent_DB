@@ -14,32 +14,14 @@ object frmMain: TfrmMain
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Button1: TButton
-    Left = 8
-    Top = 208
-    Width = 137
-    Height = 25
-    Caption = #1042#1099#1073#1086#1088' '#1076#1080#1088#1077#1082#1090#1086#1088#1080#1080
-    TabOrder = 1
-    OnClick = Button1Click
-  end
-  object Button2: TButton
-    Left = 160
-    Top = 208
-    Width = 225
-    Height = 25
-    Caption = #1050#1091#1076#1072' '#1087#1086#1083#1086#1078#1080#1090#1100' '#1088#1072#1089#1087#1072#1082#1086#1074#1072#1085#1085#1099#1077' '#1092#1072#1081#1083#1099
-    TabOrder = 2
-    OnClick = Button2Click
-  end
-  object Button3: TButton
-    Left = 8
-    Top = 256
+  object MainButton: TButton
+    Left = 560
+    Top = 527
     Width = 75
     Height = 25
     Caption = #1074#1099#1087#1086#1083#1085#1080#1090#1100
-    TabOrder = 3
-    OnClick = Button3Click
+    TabOrder = 1
+    OnClick = MainButtonClick
   end
   object ToolBar1: TToolBar
     Left = 0
@@ -56,12 +38,14 @@ object frmMain: TfrmMain
       Top = 0
       Caption = 'ToolButton1'
       ImageIndex = 2
+      OnClick = ToolButton1Click
     end
     object ToolButton2: TToolButton
       Left = 71
       Top = 0
       Caption = 'ToolButton2'
       ImageIndex = 1
+      OnClick = ToolButton2Click
     end
     object ToolButton3: TToolButton
       Left = 142
@@ -101,7 +85,7 @@ object frmMain: TfrmMain
     Left = 664
     Top = 488
     Bitmap = {
-      494C010104005000740040004000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101040050007C0040004000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000000100008000000001002000000000000000
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

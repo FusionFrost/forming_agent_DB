@@ -26,7 +26,7 @@ void pdf2txt::convert(AnsiString PdfFile,AnsiString PathPutTxt)
 			}
 			TerminateProcess(ProcInfo.hProcess, 0);
 		}else
-		{ShowMessage("Ошибка");}
+		{ShowMessage("Ошибка: Не может конвертировать из PDF в TXT");}
 	}
 }
 //---------------------------------------------------------------------------

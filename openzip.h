@@ -11,6 +11,7 @@
 #include <Vcl.FileCtrl.hpp>
 
 #include "pdf2txt.h"
+#include "Word2pdf.h"
 #include "archiv.h"
 #include "settings.h"
 
@@ -26,11 +27,8 @@
 class TfrmMain : public TForm
 {
 __published:	// IDE-managed Components
-
-	TButton *Button1;
 	TOpenDialog *OpenDialog1;
-	TButton *Button2;
-	TButton *Button3;
+	TButton *MainButton;
 	TMainMenu *MainMenu;
 	TMenuItem *Settings2;
 	TToolBar *ToolBar1;
@@ -40,17 +38,24 @@ __published:	// IDE-managed Components
 	TImageList *ImageList1;
 	TToolButton *ToolButton4;
 	TToolButton *ToolButton5;
-	void __fastcall Button1Click(TObject *Sender);
-	void __fastcall Button2Click(TObject *Sender);
-	void __fastcall Button3Click(TObject *Sender);
+	void __fastcall MainButtonClick(TObject *Sender);
 	void __fastcall ToolButton5Click(TObject *Sender);
+	void __fastcall ToolButton1Click(TObject *Sender);
+	void __fastcall ToolButton2Click(TObject *Sender);
 
 private:	// User declarations
+    struct ffblk f;					//! Информация о файле
+	int done;
+
 	void call();
-    void callConvertPdfToTxt();
+	void callConvertPdfToTxt();
 public:		// User declarations
 	pdf2txt *PdfToTxt;
-    Archiv *arv;
+	Archiv *arv;
+
+
+
+
 	__fastcall TfrmMain(TComponent* Owner);
 	__fastcall ~TfrmMain();
 

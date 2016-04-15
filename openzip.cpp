@@ -37,16 +37,17 @@ void TfrmMain::call()
 	{
 		arv->putPutDir(arv->getDefaultDir() + "\\Output\\" );
 	}
-	//arv->clearPutDir();
+
+	arv->deleteAllFiles();									//! Удаляем все файлы в указанной папке
 	arv->ExtractFiles(arv->getCurDir(),arv->getPutDir()); 	//! Распаковка файлов из архива
+
 	callConvertPdfToTxt(); 									//! Конвертировать все файлы pdf в txt
 	arv->deleteFiles(); 									//! Удалить лишние файлы( Формата pdf,архивы)
 }
 
 void TfrmMain::callConvertPdfToTxt()
 {
-	struct ffblk f;
-	register int done;
+	
 	AnsiString s = arv->getPutDir()+"\*.pdf";
 	done = findfirst( s.c_str(), &f, 0);
 	while(!done)
@@ -58,25 +59,12 @@ void TfrmMain::callConvertPdfToTxt()
 	}
 
 }
-void __fastcall TfrmMain::Button1Click(TObject *Sender)
-{
-	String dir;
-	SelectDirectory("Выбор каталога","", dir ); 	//! Выбираем папку
-	arv->putCurDir(dir);                            //! Кладем директорию в curDir
-}
+
 
 
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmMain::Button2Click(TObject *Sender)
-{
-	String dir;
-	SelectDirectory("Выбор каталога","", dir );   	//! Выбираем папку
-	arv->putPutDir(dir);                          	//! Кладем директорию в putDir
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TfrmMain::Button3Click(TObject *Sender)
+void __fastcall TfrmMain::MainButtonClick(TObject *Sender)
 {
 	call();
 }
@@ -87,6 +75,22 @@ void __fastcall TfrmMain::Button3Click(TObject *Sender)
 void __fastcall TfrmMain::ToolButton5Click(TObject *Sender)
 {
 	Setting->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::ToolButton1Click(TObject *Sender)
+{
+	String dir;
+	SelectDirectory("Выбор каталога","", dir ); 	//! Выбираем папку
+	arv->putCurDir(dir);                            //! Кладем директорию в curDir
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::ToolButton2Click(TObject *Sender)
+{
+	String dir;
+	SelectDirectory("Выбор каталога","", dir );   	//! Выбираем папку
+	arv->putPutDir(dir);
 }
 //---------------------------------------------------------------------------
 

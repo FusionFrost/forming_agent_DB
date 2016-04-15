@@ -10,22 +10,44 @@
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.ExtDlgs.hpp>
 
-
+#include "IniFiles.hpp"
+#include "archiv.h"
+#include <iostream>
 //---------------------------------------------------------------------------
 class TSetting : public TForm
 {
 __published:	// IDE-managed Components
 	TGroupBox *GroupBox1;
-	TButton *Button1;
+	TButton *Pdf2TxtButton;
 	TLabel *Label1;
 	TOpenTextFileDialog *OpenTextFileDialog1;
-	void __fastcall Button1Click(TObject *Sender);
+	TButton *Button2;
+	TGroupBox *GroupBox2;
+	TGroupBox *GroupBox3;
+	TLabel *Label2;
+	TLabel *Label3;
+	TButton *SevenZipButton;
+	TButton *WinrarButton;
+	void __fastcall Pdf2TxtButtonClick(TObject *Sender);
+	void __fastcall Button2Click(TObject *Sender);
+	void __fastcall SevenZipButtonClick(TObject *Sender);
+	void __fastcall WinrarButtonClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
+	__fastcall TSetting(TComponent* Owner);
+	__fastcall ~TSetting();
 	AnsiString PathToPdfToTxtConvector;
+	AnsiString PathTo7Zip;
+	AnsiString PathToWinrar;
+	TIniFile *Ini;
 
 	AnsiString getPathToPdfToTxtConvector(){ return PathToPdfToTxtConvector; }
-	__fastcall TSetting(TComponent* Owner);
+	AnsiString getPathTo7Zip(){ return PathTo7Zip; }
+	AnsiString getPathToWinrar(){ return PathToWinrar; }
+
+    void addToIni(AnsiString Unit,AnsiString Object, AnsiString value);
+	void createINI(AnsiString dir);
+	bool readIni();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TSetting *Setting;

@@ -161,8 +161,12 @@
             <DependentOn>settings.h</DependentOn>
             <BuildOrder>5</BuildOrder>
         </CppCompile>
-        <FormResources Include="openzip.dfm"/>
+        <CppCompile Include="Word2pdf.cpp">
+            <DependentOn>Word2pdf.h</DependentOn>
+            <BuildOrder>6</BuildOrder>
+        </CppCompile>
         <FormResources Include="settings.dfm"/>
+        <FormResources Include="openzip.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
