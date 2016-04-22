@@ -10,9 +10,13 @@
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.FileCtrl.hpp>
 
-#include "pdf2txt.h"
-#include "Word2pdf.h"
 #include "archiv.h"
+
+#include "pdf2txt.h"
+#include "doc2txt.h"
+#include "epub2txt.h"
+#include "html2txt.h"
+
 #include "settings.h"
 
 #include <dos.h>
@@ -49,12 +53,16 @@ private:	// User declarations
 
 	void call();
 	void callConvertPdfToTxt();
+	void callConvertWordToTxt();
+	void callConvertEpubToTxt();
+	void callConvertHtmlToTxt();
 public:		// User declarations
-	pdf2txt *PdfToTxt;
 	Archiv *arv;
 
-
-
+	pdf2txt *PdfToTxt;
+	doc2txt *DocToTxt;
+	epub2txt *EpubToTxt;
+	html2txt *HtmlToTxt;
 
 	__fastcall TfrmMain(TComponent* Owner);
 	__fastcall ~TfrmMain();

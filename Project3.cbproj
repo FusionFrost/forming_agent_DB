@@ -140,6 +140,18 @@
             <DependentOn>archiv.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
+        <CppCompile Include="doc2txt.cpp">
+            <DependentOn>doc2txt.h</DependentOn>
+            <BuildOrder>6</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="epub2txt.cpp">
+            <DependentOn>epub2txt.h</DependentOn>
+            <BuildOrder>7</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="html2txt.cpp">
+            <DependentOn>html2txt.h</DependentOn>
+            <BuildOrder>8</BuildOrder>
+        </CppCompile>
         <CppCompile Include="openzip.cpp">
             <Form>frmMain</Form>
             <DependentOn>openzip.h</DependentOn>
@@ -160,10 +172,6 @@
             <FormType>dfm</FormType>
             <DependentOn>settings.h</DependentOn>
             <BuildOrder>5</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="Word2pdf.cpp">
-            <DependentOn>Word2pdf.h</DependentOn>
-            <BuildOrder>6</BuildOrder>
         </CppCompile>
         <FormResources Include="settings.dfm"/>
         <FormResources Include="openzip.dfm"/>
