@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+п»ї//---------------------------------------------------------------------------
 
 #ifndef openzipH
 #define openzipH
@@ -48,7 +48,7 @@ __published:	// IDE-managed Components
 	void __fastcall ToolButton2Click(TObject *Sender);
 
 private:	// User declarations
-    struct ffblk f;					//! Информация о файле
+    struct ffblk f;					//! РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С„Р°Р№Р»Рµ
 	int done;
 
 	void call();

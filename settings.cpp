@@ -41,15 +41,15 @@ void __fastcall TSetting::Button2Click(TObject *Sender)
 
 	if(PathToPdfToTxtConvector == "")
 	{
-		ShowMessage("Ошибка: Укажите путь до Pdfconvertor");
+		ShowMessage("РћС€РёР±РєР°: РЈРєР°Р¶РёС‚Рµ РїСѓС‚СЊ РґРѕ Pdfconvertor");
 	}else
 	if(PathTo7Zip == "")
 	{
-		ShowMessage("Ошибка: Укажите путь до 7zip");
+		ShowMessage("РћС€РёР±РєР°: РЈРєР°Р¶РёС‚Рµ РїСѓС‚СЊ РґРѕ 7zip");
 	}else
     if(PathToWinrar == "")
 	{
-		ShowMessage("Ошибка: Укажите путь до Winrar");
+		ShowMessage("РћС€РёР±РєР°: РЈРєР°Р¶РёС‚Рµ РїСѓС‚СЊ РґРѕ Winrar");
 	}else
 	{
     	Setting->Close();
@@ -85,9 +85,9 @@ void __fastcall TSetting::WinrarButtonClick(TObject *Sender)
 
 void TSetting::createINI(AnsiString dir)
 {
-	AnsiString s = dir + "\\options.ini";	//! Путь до options.ini
-	Ini = new TIniFile(s);                  //! Создает новый ini или подключается к существующему
-	readIni(); 								//! Считываем значения из настроек
+	AnsiString s = dir + "\\options.ini";	//! РџСѓС‚СЊ РґРѕ options.ini
+	Ini = new TIniFile(s);                  //! РЎРѕР·РґР°РµС‚ РЅРѕРІС‹Р№ ini РёР»Рё РїРѕРґРєР»СЋС‡Р°РµС‚СЃСЏ Рє СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРјСѓ
+	readIni(); 								//! РЎС‡РёС‚С‹РІР°РµРј Р·РЅР°С‡РµРЅРёСЏ РёР· РЅР°СЃС‚СЂРѕРµРє
 }
 void TSetting::addToIni(AnsiString Unit,AnsiString Object, AnsiString value)
 {
@@ -105,4 +105,3 @@ bool TSetting::readIni()
 	}
 }
 //---------------------------------------------------------------------------
-

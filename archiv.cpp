@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+п»ї//---------------------------------------------------------------------------
 
 #pragma hdrstop
 
@@ -8,44 +8,26 @@
 
 Archiv::Archiv()
 {
-	//! Получаем текущую директорию (в которой выполняется exe)
+	
 	char buffer[1000];
-	GetCurrentDirectory(sizeof(buffer),buffer);
-	setDefaultDir(buffer); // Устанавливаем дефолтную директорию
+	GetCurrentDirectory(sizeof(buffer),buffer); //! РџРѕР»СѓС‡Р°РµРј РґРёСЂРµРєС‚РѕСЂРёСЋ, РІ РєРѕС‚РѕСЂРѕР№ Р·Р°РїСѓС‰РµРЅР° РїСЂРѕРіСЂР°РјРјР°
+	setDefaultDir(buffer);						//! РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РґРёСЂРµРєС‚РѕСЂРёСЋ 
 }
 
-/*!
 
-	en: funcktion extracting filse(recursion) in current directory ru: Функция распаковки файлов(рекурсивной) в указанном каталоге.
-	en: first argument: Path to current files 					   ru: первый аргумент: Путь до файлов(Папка, где лежат все файлы)
-	en: Second argument: Path where to put the file                ru: второй аргумент: Путь куда положить распакованные файлы
-*/
 void Archiv::ExtractFiles(AnsiString CurDir,AnsiString putDir)
 {
-	ExtractFilesAll(CurDir,putDir);                             //! распаковка архивов,папок, файлов в указанный каталог
-	ExtractFolderAndArchiv(putDir,putDir);                      //! Распаковка всех вложенностей папок и архивов
-	ExtractFilesTxt(CurDir,putDir); 							//! Копирует все файлы txt из cDir в pDir
-}
-
-void Archiv::ExtractFolderAndArchiv(AnsiString CurDir,AnsiString putDir)
-{
-	ExtractFolder(putDir,putDir);                               //! Распаковываем содержимое папки в указанный каталог
-	ExtractFilesArchiv(putDir,putDir);                          //! Распаковываем файлы в указанном каталоге
-
-	//Если после распаковки архивов остались папки
-	TStringDynArray list = TDirectory::GetDirectories(CurDir);
-	if( list.Length != 0)
-	{
-    	ExtractFolderAndArchiv(CurDir,putDir);
-	}
+	ExtractFilesAll(CurDir,putDir);                           	//! Р Р°СЃРїР°РєРѕРІС‹РІР°РµРј РІСЃРµ С„Р°Р№Р»С‹ РёР· РґРёСЂРµРєС‚РѕСЂРёРё 
+	ExtractFolderAndArchiv(putDir,putDir);                     	//! Р Р°СЃРїР°РєРѕРІС‹РІР°РµРј РІСЃРµ РїР°РїРєРё Рё Р°СЂС…РёРІС‹ РёР· РґРёСЂРµРєС‚РѕСЂРёРё 
+	ExtractFilesTxt(CurDir,putDir); 						  	//! РџРµСЂРµРЅРѕСЃРёРј РІСЃРµ С„Р°Р№Р»С‹ txt 
 }
 
 /*!
-	Распаковка архивов, перенос папок и файлов(нужного расширения) в putDir
+		
 */
 void Archiv::ExtractFilesAll(AnsiString CurDir,AnsiString putDir)
 {
-	AnsiString cDir = CurDir; //! Запоминаем указанную директорию
+	AnsiString cDir = CurDir; 
 	AnsiString CmdLine_7z, CmdLine_zip, CmdLine_rar;
 
 	STARTUPINFO StartInfo = {sizeof(TStartupInfo)};
@@ -55,11 +37,12 @@ void Archiv::ExtractFilesAll(AnsiString CurDir,AnsiString putDir)
 	StartInfo.dwFlags = STARTF_USESHOWWINDOW;
 	StartInfo.wShowWindow= SW_HIDE;
 
+	//! РљРѕРјР°РЅРґС‹ РґР»СЏ СЂР°СЃРїР°РєРѕРІРєРё Р°СЂС…РёРІРѕРІ 
 	CmdLine_7z = DefaultDir + "\\7z\\7za.exe x " + cDir +"\\*.7z -o" + putDir;
 	CmdLine_zip = DefaultDir + "\\7z\\7za.exe x " + cDir +"\\*.zip -o" + putDir;
-	CmdLine_rar = DefaultDir + "\\WinRar\\Rar.exe x " + cDir +"\\*.rar " + putDir;
+	CmdLine_rar = DefaultDir + "\\7z\\7za.exe x " + cDir +"\\*.rar -o" + putDir;
 
-	//! Для .7z
+	//! Р Р°СЃРїР°РєРѕРІРєР° С„Р°Р№Р»РѕРІ С„РѕСЂРјР°С‚Р° .7z
 	if(CreateProcess(NULL, CmdLine_7z.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
 	{
 		if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
@@ -68,10 +51,10 @@ void Archiv::ExtractFilesAll(AnsiString CurDir,AnsiString putDir)
 		}
 		TerminateProcess(ProcInfo.hProcess, 0);
 	}else
-	{ShowMessage("Ошибка");}
+	{ShowMessage("Error open .7z file");}
 
 
-	//! Для .zip
+	//! Р Р°СЃРїР°РєРѕРІРєР° С„Р°Р№Р»РѕРІ С„РѕСЂРјР°С‚Р° .zip
 	if(CreateProcess(NULL, CmdLine_zip.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
 	{
 		if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
@@ -80,9 +63,9 @@ void Archiv::ExtractFilesAll(AnsiString CurDir,AnsiString putDir)
 		}
 		TerminateProcess(ProcInfo.hProcess, 0);
 	}else
-		ShowMessage("Ошибка");
+		ShowMessage("Error open .zip file");
 
-	//! Для .rar
+	//! Р Р°СЃРїР°РєРѕРІРєР° С„Р°Р№Р»РѕРІ С„РѕСЂРјР°С‚Р° .rar
 	if(CreateProcess(NULL, CmdLine_rar.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
 	{
 		if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
@@ -91,107 +74,45 @@ void Archiv::ExtractFilesAll(AnsiString CurDir,AnsiString putDir)
 		}
 		TerminateProcess(ProcInfo.hProcess, 0);
 	}else
-		ShowMessage("Ошибка");
+		ShowMessage("Error open .rar file");
 
-	ExtractFolderAll(CurDir,putDir); //! Экспорт папок из файла
+	ExtractFolderAll(CurDir,putDir); 
 
 }
 
-void Archiv::ExtractFilesArchiv(AnsiString CurDir,AnsiString putDir)
+/*!
+	РљРѕРїРёСЂСѓСЋС‚СЃСЏ РІСЃРµ РІР»РѕР¶РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ РІ РїР°РїРєСѓ
+*/
+void Archiv::ExtractFolderAll(AnsiString CurDir,AnsiString putDir)
 {
-
-	AnsiString cDir = CurDir; //! Запоминаем указанную директорию
-	AnsiString CmdLine_7z, CmdLine_zip, CmdLine_rar;
-
-	STARTUPINFO StartInfo = {sizeof(TStartupInfo)};
-	PROCESS_INFORMATION ProcInfo;
-	LPCSTR t;
-	StartInfo.cb = sizeof(StartInfo);
-	StartInfo.dwFlags = STARTF_USESHOWWINDOW;
-	StartInfo.wShowWindow = SW_HIDE;
-
-	bool check = false;
-
-	AnsiString zip = CurDir+"\*.zip";
-	done = findfirst( zip.c_str(), &f, 0);
-	while(!done)
+	TStringDynArray list = TDirectory::GetDirectories(CurDir);
+	if( list.Length != 0)
 	{
-		zip =  CurDir + AnsiString(f.ff_name);
-		CmdLine_zip = DefaultDir + "\\7z\\7za.exe x " + zip +" -r -o" + putDir;
-
-		//! Для .zip
-		if(CreateProcess(NULL, CmdLine_zip.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
+		for(int i = 0; i < list.Length; i++)
 		{
-			if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
-			{
-				CloseHandle(ProcInfo.hProcess);
-			}
-			TerminateProcess(ProcInfo.hProcess, 0);
-		}else
-		{ShowMessage("Ошибка");}
-
-		DeleteFile(zip);
-
-		check = true;
-		done = findnext(&f);
+			copy(list[i],putDir);
+		}
 	}
-
-	AnsiString SevenZ = CurDir+"\*.7z";
-	done = findfirst( SevenZ.c_str(), &f, 0);
-	while(!done)
-	{
-		SevenZ =  CurDir + AnsiString(f.ff_name);
-		CmdLine_7z = DefaultDir + "\\7z\\7za.exe x " + SevenZ +" -r -o" + putDir;
-
-		//! Для .7z
-		if(CreateProcess(NULL, CmdLine_7z.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
-		{
-			if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
-			{
-				CloseHandle(ProcInfo.hProcess);
-			}
-			TerminateProcess(ProcInfo.hProcess, 0);
-		}else
-		{ShowMessage("Ошибка");}
-
-		DeleteFile(SevenZ);
-
-		check = true;
-		done = findnext(&f);
-	}
-
-	AnsiString rar = CurDir+"\*.rar";
-	done = findfirst( rar.c_str(), &f, 0);
-	while(!done)
-	{
-		rar =  CurDir + AnsiString(f.ff_name);
-		CmdLine_rar = DefaultDir + "\\WinRar\\Rar.exe x " + rar +" -r " + putDir;
-
-		//! Для .rar
-		if(CreateProcess(NULL, CmdLine_rar.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
-		{
-			if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
-			{
-				CloseHandle(ProcInfo.hProcess);
-			}
-			TerminateProcess(ProcInfo.hProcess, 0);
-		}else
-		{ShowMessage("Ошибка");}
-
-		DeleteFile(rar);
-
-		check = true;
-		done = findnext(&f);
-	}
-
-	if(check == true)
-	{
-		ExtractFilesArchiv(putDir,putDir);
-	}
-
-
 }
 
+/*!
+	Р Р°СЃРїР°РєРѕРІС‹РІР°СЋС‚СЃСЏ РІСЃРµ РїР°РїРєРё Рё Р°СЂС…РёРІС‹
+*/
+void Archiv::ExtractFolderAndArchiv(AnsiString CurDir,AnsiString putDir)
+{
+	ExtractFolder(putDir,putDir);                               //! Р Р°СЃРїР°РєРѕРІС‹РІР°РµРј РІСЃРµ РїР°РїРєРё
+	ExtractFilesArchiv(putDir,putDir);                          //! Р Р°СЃРїР°РєРѕРІС‹РІР°РµРј РІСЃРµ Р°СЂС…РёРІС‹
+
+	TStringDynArray list = TDirectory::GetDirectories(CurDir);
+	if( list.Length != 0)
+	{
+    	ExtractFolderAndArchiv(CurDir,putDir); 					//! РџРѕРІС‚РѕСЂСЏРµРј СЂР°СЃРїР°РєРѕРІРєСѓ
+	}
+}
+
+/*!
+	Р Р°СЃРїР°РєРѕРІРєР° РїР°РїРѕРє
+*/
 void Archiv::ExtractFolder(AnsiString cDir,AnsiString pDir)
 {
 	AnsiString inStr,outStr;
@@ -219,20 +140,101 @@ void Archiv::ExtractFolder(AnsiString cDir,AnsiString pDir)
 	}
 }
 
-//! Копирует все папки из директории CurDir в
-void Archiv::ExtractFolderAll(AnsiString CurDir,AnsiString putDir)
+/*!
+	Р Р°СЃРїР°РєРѕРІС‹РІР°СЋС‚СЃСЏ РІСЃРµ Р°СЂС…РёРІС‹
+*/
+void Archiv::ExtractFilesArchiv(AnsiString CurDir,AnsiString putDir)
 {
-	TStringDynArray list = TDirectory::GetDirectories(CurDir);
-	if( list.Length != 0)
+
+	AnsiString cDir = CurDir; 
+	AnsiString CmdLine_7z, CmdLine_zip, CmdLine_rar;
+
+	STARTUPINFO StartInfo = {sizeof(TStartupInfo)};
+	PROCESS_INFORMATION ProcInfo;
+	LPCSTR t;
+	StartInfo.cb = sizeof(StartInfo);
+	StartInfo.dwFlags = STARTF_USESHOWWINDOW;
+	StartInfo.wShowWindow = SW_HIDE;
+
+	bool check = false;
+
+	AnsiString zip = CurDir+"\*.zip";
+	done = findfirst( zip.c_str(), &f, 0);
+	while(!done)
 	{
-		for(int i = 0; i < list.Length; i++)
+		zip =  CurDir + AnsiString(f.ff_name);
+		CmdLine_zip = DefaultDir + "\\7z\\7za.exe x " + zip +" -r -o" + putDir;
+
+		if(CreateProcess(NULL, CmdLine_zip.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
 		{
-			copy(list[i],putDir);
-		}
+			if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
+			{
+				CloseHandle(ProcInfo.hProcess);
+			}
+			TerminateProcess(ProcInfo.hProcess, 0);
+		}else
+		{ShowMessage("Error open .zip file");}
+
+		DeleteFile(zip);
+
+		check = true;
+		done = findnext(&f);
 	}
+
+	AnsiString SevenZ = CurDir+"\*.7z";
+	done = findfirst( SevenZ.c_str(), &f, 0);
+	while(!done)
+	{
+		SevenZ =  CurDir + AnsiString(f.ff_name);
+		CmdLine_7z = DefaultDir + "\\7z\\7za.exe x " + SevenZ +" -r -o" + putDir;
+
+		if(CreateProcess(NULL, CmdLine_7z.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
+		{
+			if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
+			{
+				CloseHandle(ProcInfo.hProcess);
+			}
+			TerminateProcess(ProcInfo.hProcess, 0);
+		}else
+		{ShowMessage("Error open .7z file");}
+
+		DeleteFile(SevenZ);
+
+		check = true;
+		done = findnext(&f);
+	}
+
+	AnsiString rar = CurDir+"\*.rar";
+	done = findfirst( rar.c_str(), &f, 0);
+	while(!done)
+	{
+		rar =  CurDir + AnsiString(f.ff_name);
+		CmdLine_rar = DefaultDir + "\\7z\\7za.exe x " + rar +" -r -o" + putDir;
+
+		if(CreateProcess(NULL, CmdLine_rar.c_str(),NULL,NULL,false,CREATE_NEW_CONSOLE|HIGH_PRIORITY_CLASS,NULL,NULL, &StartInfo, &ProcInfo) == true)
+		{
+			if (WaitForSingleObject(ProcInfo.hProcess,10000)== WAIT_TIMEOUT)
+			{
+				CloseHandle(ProcInfo.hProcess);
+			}
+			TerminateProcess(ProcInfo.hProcess, 0);
+		}else
+		{ShowMessage("Error open .rar file");}
+
+		DeleteFile(rar);
+
+		check = true;
+		done = findnext(&f);
+	}
+
+	if(check == true)
+	{
+		ExtractFilesArchiv(putDir,putDir);
+	}
+
 }
 
-//! Копирует все файлы txt из cDir в pDir
+//! Р Р°СЃРїР°РєРѕРІРєР° РІСЃРµС… С„Р°Р№Р»РѕРІ С„РѕСЂРјР°С‚Р° txt
 void Archiv::ExtractFilesTxt(AnsiString cDir, AnsiString pDir)
 {
 	AnsiString inStr = cDir+"\\*.txt";
@@ -240,13 +242,14 @@ void Archiv::ExtractFilesTxt(AnsiString cDir, AnsiString pDir)
 	done = findfirst( inStr.c_str(), &f, 0);
 	while(!done)
 	{
-		outStr = pDir+ "\\" + AnsiString(f.ff_name);
-		MoveFile(inStr.c_str(),outStr.c_str());
+		inStr = cDir + AnsiString(f.ff_name);
+		outStr = pDir + AnsiString(f.ff_name);
+		CopyFile(inStr.c_str(),outStr.c_str(),true);
 		done = findnext(&f);
 	}
 }
 
-//Копирует из одной диретории в другую
+//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 void Archiv::copy(AnsiString FileSource, AnsiString FileDestan)
 {
 	char cFrom[MAX_PATH]={0};
@@ -262,10 +265,10 @@ void Archiv::copy(AnsiString FileSource, AnsiString FileDestan)
 	SHFileOperation(&fos);
 }
 
-//! Удаляет все файлы .docx
+//! РЈРґР°Р»СЏРµС‚ С„Р°Р№Р»С‹ С„РѕСЂРјР°С‚Р° .docx
 void Archiv::deleteDocx()
 {
-	//! Удаляем все doc
+	//! РЈРґР°Р»СЏРµС‚ С„Р°Р№Р»С‹ С„РѕСЂРјР°С‚Р° doc
 	AnsiString s = putDir+"\*.docx";
 	done = findfirst( s.c_str(), &f, 0);
 	while(!done)
@@ -276,7 +279,7 @@ void Archiv::deleteDocx()
 	}
 }
 
-//! Удаляет все файлы .doc
+//! РЈРґР°Р»СЏРµС‚ С„Р°Р№Р»С‹ С„РѕСЂРјР°С‚Р° .doc
 void Archiv::deleteDoc()
 {
 	AnsiString s = putDir+"\*.doc";
@@ -289,7 +292,7 @@ void Archiv::deleteDoc()
 	}
 }
 
-//! Удаляет все файлы .pdf
+//! РЈРґР°Р»СЏРµС‚ С„Р°Р№Р»С‹ С„РѕСЂРјР°С‚Р° .pdf
 void Archiv::deletePdf()
 {
 	AnsiString s = putDir+"\*.pdf";
@@ -302,10 +305,9 @@ void Archiv::deletePdf()
 	}
 }
 
-//! Удаляем все файлы .rar
+//! РЈРґР°Р»СЏРµС‚ С„Р°Р№Р»С‹ С„РѕСЂРјР°С‚Р° .rar
 void Archiv::deleteRar()
 {
-	//! Удаляем все rar
 	AnsiString s = putDir+"\*.rar";
 	done = findfirst( s.c_str(), &f, 0);
 	while(!done)
@@ -316,10 +318,9 @@ void Archiv::deleteRar()
 	}
 }
 
-//! Удаляем все файлы .zip
+//! РЈРґР°Р»СЏРµС‚ С„Р°Р№Р»С‹ С„РѕСЂРјР°С‚Р° .zip
 void Archiv::deleteZip()
 {
-	//! Удаляем все zip
 	AnsiString s = putDir+"\*.zip";
 	done = findfirst( s.c_str(), &f, 0);
 	while(!done)
@@ -330,10 +331,9 @@ void Archiv::deleteZip()
 	}
 }
 
-//! Удаляем все файлы .7z
+//! РЈРґР°Р»СЏРµС‚ С„Р°Р№Р»С‹ С„РѕСЂРјР°С‚Р° .7z
 void Archiv::delete7z()
 {
-	//! Удаляем все rar
 	AnsiString s = putDir+"\*.7z";
 	done = findfirst( s.c_str(), &f, 0);
 	while(!done)
@@ -346,14 +346,11 @@ void Archiv::delete7z()
 
 
 /*!
-	Удаляет все файлы из putDir
+	РЈРґР°Р»СЏРµС‚ РІСЃРµ С„Р°Р№Р»С‹ РёР· putDir
 */
 void Archiv::deleteAllFiles()
 {
-	struct ffblk f;
-	register int done;
 
-	//! Удаляем все PDF
 	AnsiString s = putDir+"\*.*";
 	done = findfirst( s.c_str(), &f, 0);
 	while(!done)

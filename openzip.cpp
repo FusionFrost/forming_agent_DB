@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+ï»¿//---------------------------------------------------------------------------
 
 #include <vcl.h>
 #pragma hdrstop
@@ -32,35 +32,35 @@ __fastcall TfrmMain::~TfrmMain()
 
 void TfrmMain::call()
 {
-	arv->clearDir(); //! ×èñòèì äèðåêòîðèè
+	arv->clearDir(); //! Ð§Ð¸ÑÑ‚Ð¸Ð¼ Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ð¸ { curDir = ""; putDir = ""; } !ÐºÑ€Ð¾Ð¼Ðµ DefaulDir
 
-	if(arv->getCurDir() == "") //! Åñëè íå óêàçàëè äèðåêòîðèþ
+	if(arv->getCurDir() == "") //! Ð•ÑÐ»Ð¸ Ð½Ðµ ÑƒÐºÐ°Ð·Ð°Ð»Ð¸ Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸ÑŽ
 	{
-		arv->putCurDir(arv->getDefaultDir() + "\\Input\\" );
+		arv->setCurDir(arv->getDefaultDir() + "\\Input\\" );
 	}
 	if(arv->getPutDir() == "")
 	{
-		arv->putPutDir(arv->getDefaultDir() + "\\Output\\" );
+		arv->setPutDir(arv->getDefaultDir() + "\\Output\\" );
 	}
 
-	arv->deleteAllFiles();									//! Óäàëÿåì âñå ôàéëû â êîðíåâîé(putdir) ïàïêå
-	arv->ExtractFiles(arv->getCurDir(),arv->getPutDir()); 	//! Ðàñïàêîâêà ôàéëîâ èç àðõèâà(ïàïîê è ôàéëîâ)
+	arv->deleteAllFiles();									//! Ð£Ð´Ð°Ð»ÑÐµÐ¼ Ð²ÑÐµ Ñ„Ð°Ð¹Ð»Ñ‹ Ð² ÐºÐ¾Ñ€Ð½ÐµÐ²Ð¾Ð¹(putdir) Ð¿Ð°Ð¿ÐºÐµ
+	arv->ExtractFiles(arv->getCurDir(),arv->getPutDir()); 	//! Ð Ð°ÑÐ¿Ð°ÐºÐ¾Ð²ÐºÐ° Ñ„Ð°Ð¹Ð»Ð¾Ð² Ð¸Ð· Ð°Ñ€Ñ…Ð¸Ð²Ð°(Ð¿Ð°Ð¿Ð¾Ðº Ð¸ Ñ„Ð°Ð¹Ð»Ð¾Ð²)
 
-	callConvertHtmlToTxt();                                 //! Êîíâåðòèðóåò âñå ôàéëû html â pdf (íå â txt)
-	callConvertEpubToTxt();                                 //! Êîíâåðòèðóåò âñå ôàéëû epub â pdf (íå â txt)
-	callConvertWordToTxt();                                 //! Êîíâåðòèðóåò âñå ôàéëû word â pdf (íå â txt)
-	callConvertPdfToTxt(); 									//! Êîíâåðòèðîâàòü âñå ôàéëû pdf â txt (âûçûâàòü âñåãäà â êîíöå)
+	//callConvertHtmlToTxt();                                 //! ÐšÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€ÑƒÐµÑ‚ Ð²ÑÐµ Ñ„Ð°Ð¹Ð»Ñ‹ html Ð² pdf (Ð½Ðµ Ð² txt)
+	//callConvertEpubToTxt();                                 //! ÐšÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€ÑƒÐµÑ‚ Ð²ÑÐµ Ñ„Ð°Ð¹Ð»Ñ‹ epub Ð² pdf (Ð½Ðµ Ð² txt)
+	//callConvertWordToTxt();                                 //! ÐšÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€ÑƒÐµÑ‚ Ð²ÑÐµ Ñ„Ð°Ð¹Ð»Ñ‹ word Ð² pdf (Ð½Ðµ Ð² txt)
+	//callConvertPdfToTxt(); 									//! ÐšÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð²ÑÐµ Ñ„Ð°Ð¹Ð»Ñ‹ pdf Ð² txt (Ð²Ñ‹Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð²ÑÐµÐ³Ð´Ð° Ð² ÐºÐ¾Ð½Ñ†Ðµ)
 
-	//! Óäàëÿåì ôàéëû
-	arv->deletePdf();
-	arv->deleteDocx();
-	arv->deleteDoc();
-	arv->deleteRar();
-	arv->deleteZip();
-	arv->delete7z();
+	//! Ð£Ð´Ð°Ð»ÑÐµÐ¼ Ñ„Ð°Ð¹Ð»Ñ‹
+//	arv->deletePdf();
+//	arv->deleteDocx();
+//	arv->deleteDoc();
+//	arv->deleteRar();
+//	arv->deleteZip();
+//	arv->delete7z();
 }
 
-//! Êîíâåðòèðóåò PDF â TXT
+//! ÐšÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€ÑƒÐµÑ‚ PDF Ð² TXT
 void TfrmMain::callConvertPdfToTxt()
 {
 	AnsiString s = arv->getPutDir()+"\*.pdf";
@@ -74,7 +74,7 @@ void TfrmMain::callConvertPdfToTxt()
 	}
 }
 
-//! Êîâåðòèðóåò EPUB â PDF
+//! ÐšÐ¾Ð²ÐµÑ€Ñ‚Ð¸Ñ€ÑƒÐµÑ‚ EPUB Ð² PDF
 void TfrmMain::callConvertEpubToTxt()
 {
 	AnsiString s = arv->getPutDir()+"\*.epub";
@@ -88,7 +88,7 @@ void TfrmMain::callConvertEpubToTxt()
 	}
 }
 
-//! Êîíâåðòèðóåò docx/doc â PDF
+//! ÐšÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€ÑƒÐµÑ‚ docx/doc Ð² PDF
 void TfrmMain::callConvertWordToTxt()
 {
 
@@ -114,7 +114,7 @@ void TfrmMain::callConvertWordToTxt()
 
 }
 
-//! Êîíâåðòèðóåò html â PDF
+//! ÐšÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€ÑƒÐµÑ‚ html Ð² PDF
 void TfrmMain::callConvertHtmlToTxt()
 {
 	AnsiString s = arv->getPutDir()+"\*.html";
@@ -141,14 +141,13 @@ void __fastcall TfrmMain::ToolButton5Click(TObject *Sender)
 void __fastcall TfrmMain::ToolButton1Click(TObject *Sender)
 {
 	String dir;
-	SelectDirectory("Âûáîð êàòàëîãà","", dir ); 	//! Âûáèðàåì ïàïêó
-	arv->putCurDir(dir);                            //! Êëàäåì äèðåêòîðèþ â curDir
+	SelectDirectory("Ð’Ñ‹Ð±Ð¾Ñ€ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°","", dir ); 	//! Ð’Ñ‹Ð±Ð¸Ñ€Ð°ÐµÐ¼ Ð¿Ð°Ð¿ÐºÑƒ
+	arv->setCurDir(dir);                            //! ÐšÐ»Ð°Ð´ÐµÐ¼ Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸ÑŽ Ð² curDir
 }
 
 void __fastcall TfrmMain::ToolButton2Click(TObject *Sender)
 {
 	String dir;
-	SelectDirectory("Âûáîð êàòàëîãà","", dir );   	//! Âûáèðàåì ïàïêó
-	arv->putPutDir(dir);
+	SelectDirectory("Ð’Ñ‹Ð±Ð¾Ñ€ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°","", dir );   	//! Ð’Ñ‹Ð±Ð¸Ñ€Ð°ÐµÐ¼ Ð¿Ð°Ð¿ÐºÑƒ
+	arv->setPutDir(dir);
 }
-

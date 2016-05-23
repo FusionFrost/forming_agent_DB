@@ -1,21 +1,21 @@
-//---------------------------------------------------------------------------
+п»ї//---------------------------------------------------------------------------
 
 #ifndef archivH
 #define archivH
 #include <vcl.h>
 
-#include <System.IOUtils.hpp> //! Работа с директориями
+#include <System.IOUtils.hpp> //! Р Р°Р±РѕС‚Р° СЃ РґРёСЂРµРєС‚РѕСЂРёСЏРјРё
 
 #include <dos.h>
 #include <dir.h>
 //!
-//! Класс для распаковки архивов, распаковки папок и файлов
+//! РљР»Р°СЃСЃ РґР»СЏ СЂР°СЃРїР°РєРѕРІРєРё Р°СЂС…РёРІРѕРІ, СЂР°СЃРїР°РєРѕРІРєРё РїР°РїРѕРє Рё С„Р°Р№Р»РѕРІ
 //!
 class Archiv
 {
 private:
-	AnsiString curDir;											//! Текущая директория, где лежат файлы(Которую укажет пользователь)
-	AnsiString putDir;      									//! Директория, куда кладутся распакованные файлы
+	AnsiString curDir;											//! РўРµРєСѓС‰Р°СЏ РґРёСЂРµРєС‚РѕСЂРёСЏ, РіРґРµ Р»РµР¶Р°С‚ С„Р°Р№Р»С‹(РљРѕС‚РѕСЂСѓСЋ СѓРєР°Р¶РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ)
+	AnsiString putDir;      									//! Р”РёСЂРµРєС‚РѕСЂРёСЏ, РєСѓРґР° РєР»Р°РґСѓС‚СЃСЏ СЂР°СЃРїР°РєРѕРІР°РЅРЅС‹Рµ С„Р°Р№Р»С‹
 	AnsiString DefaultDir;
 	TDirectory Dir;
 
@@ -34,8 +34,8 @@ public:
 	void ExtractFolder(AnsiString cDir,AnsiString pDir);                //!
 	void ExtractFolderAll(AnsiString CurDir,AnsiString putDir);         //!
 
-	void putCurDir(AnsiString cDir){ curDir = cDir; }
-	void putPutDir(AnsiString cDir){ putDir = cDir; }
+	void setCurDir(AnsiString cDir){ curDir = cDir; }
+	void setPutDir(AnsiString cDir){ putDir = cDir; }
     void setDefaultDir(AnsiString D) { DefaultDir = D; }
 	void clearDir(){ curDir = ""; putDir = ""; }
 	void copy(AnsiString FileSource, AnsiString FileDestan);
@@ -44,12 +44,12 @@ public:
 	AnsiString getPutDir() { return putDir; }
 	AnsiString getDefaultDir() { return DefaultDir; }
 
-	void deleteAllFiles();                                      //! Удаляет все файлы
-    void deleteDocx();											//! Удаляет все файлы .docx
-	void deleteDoc();											//! Удаляет все файлы .doc
-	void deletePdf();                                           //! Удаляет все файлы .pdf
-	void deleteRar();                                           //! Удаляет все файлы .rar
-	void deleteZip();                                           //! Удаляет все файлы .zip
-	void delete7z();                                            //! Удаляет все файлы .7z
+	void deleteAllFiles();                                      //! РЈРґР°Р»СЏРµС‚ РІСЃРµ С„Р°Р№Р»С‹
+    void deleteDocx();											//! РЈРґР°Р»СЏРµС‚ РІСЃРµ С„Р°Р№Р»С‹ .docx
+	void deleteDoc();											//! РЈРґР°Р»СЏРµС‚ РІСЃРµ С„Р°Р№Р»С‹ .doc
+	void deletePdf();                                           //! РЈРґР°Р»СЏРµС‚ РІСЃРµ С„Р°Р№Р»С‹ .pdf
+	void deleteRar();                                           //! РЈРґР°Р»СЏРµС‚ РІСЃРµ С„Р°Р№Р»С‹ .rar
+	void deleteZip();                                           //! РЈРґР°Р»СЏРµС‚ РІСЃРµ С„Р°Р№Р»С‹ .zip
+	void delete7z();                                            //! РЈРґР°Р»СЏРµС‚ РІСЃРµ С„Р°Р№Р»С‹ .7z
 };
 #endif
