@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------
 
 #include <vcl.h>
 #pragma hdrstop
@@ -17,12 +17,14 @@ __fastcall TSetting::TSetting(TComponent* Owner)
 	GetCurrentDirectory(sizeof(buffer),buffer);
 	createINI( AnsiString(buffer) );
 
-}
+	EditShow();
 
+}
 __fastcall TSetting::~TSetting()
 {
 
 }
+
 //---------------------------------------------------------------------------
 void __fastcall TSetting::Pdf2TxtButtonClick(TObject *Sender)
 {
@@ -32,8 +34,10 @@ void __fastcall TSetting::Pdf2TxtButtonClick(TObject *Sender)
 		if(PathToWinrar != NULL)
 		{
 			addToIni("SETTINGS","PDFTOTXT",PathToPdfToTxtConvector);
+			PDF2TXTEdit->Text = PathToPdfToTxtConvector;
 		}
 	}
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TSetting::Button2Click(TObject *Sender)
@@ -66,6 +70,7 @@ void __fastcall TSetting::SevenZipButtonClick(TObject *Sender)
 		if(PathToWinrar != NULL)
 		{
 			addToIni("SETTINGS","7ZIP",PathTo7Zip);
+			SEVENZIPEdit->Text = PathTo7Zip;
 		}
 	}
 }
@@ -79,6 +84,7 @@ void __fastcall TSetting::WinrarButtonClick(TObject *Sender)
 		if(PathToWinrar != NULL)
 		{
 			addToIni("SETTINGS","WINRAR",PathToWinrar);
+			WINRAREdit->Text = PathToWinrar;
 		}
 	}
 }
@@ -93,7 +99,7 @@ void TSetting::addToIni(AnsiString Unit,AnsiString Object, AnsiString value)
 {
 	Ini->WriteString(Unit,Object,value);
 }
-bool TSetting::readIni()
+void TSetting::readIni()
 {
 	PathToPdfToTxtConvector = Ini->ReadString("SETTINGS","PDFTOTXT","");
 	PathTo7Zip = Ini->ReadString("SETTINGS","7ZIP","");
@@ -104,4 +110,13 @@ bool TSetting::readIni()
 		Setting->Show();
 	}
 }
+
+void TSetting::EditShow()
+{
+	//! Отображение Edit
+	PDF2TXTEdit->Text = PathToPdfToTxtConvector;
+	SEVENZIPEdit->Text = PathTo7Zip;
+	WINRAREdit->Text = PathToWinrar;
+}
+
 //---------------------------------------------------------------------------

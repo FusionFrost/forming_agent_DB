@@ -19,7 +19,7 @@ object frmMain: TfrmMain
     Top = 527
     Width = 75
     Height = 25
-    Caption = #1074#1099#1087#1086#1083#1085#1080#1090#1100
+    Caption = 'Continue'
     TabOrder = 1
     OnClick = MainButtonClick
   end
@@ -28,42 +28,38 @@ object frmMain: TfrmMain
     Top = 0
     Width = 710
     Height = 89
-    ButtonHeight = 70
-    ButtonWidth = 71
+    ButtonHeight = 84
+    ButtonWidth = 72
     Caption = 'ToolBar1'
     Images = ImageList1
+    ShowCaptions = True
     TabOrder = 0
     object ToolButton1: TToolButton
       Left = 0
       Top = 0
-      Caption = 'ToolButton1'
+      Caption = 'Input folder'
       ImageIndex = 2
       OnClick = ToolButton1Click
     end
     object ToolButton2: TToolButton
-      Left = 71
+      Left = 72
       Top = 0
-      Caption = 'ToolButton2'
+      Caption = 'Output folder'
       ImageIndex = 1
       OnClick = ToolButton2Click
     end
-    object ToolButton3: TToolButton
-      Left = 142
-      Top = 0
-      Caption = 'ToolButton3'
-    end
     object ToolButton4: TToolButton
-      Left = 213
+      Left = 144
       Top = 0
-      Width = 422
+      Width = 493
       Caption = 'ToolButton4'
       ImageIndex = 3
       Style = tbsSeparator
     end
     object ToolButton5: TToolButton
-      Left = 635
+      Left = 637
       Top = 0
-      Caption = 'ToolButton5'
+      Caption = 'Settings'
       ImageIndex = 0
       OnClick = ToolButton5Click
     end
@@ -85,7 +81,7 @@ object frmMain: TfrmMain
     Left = 664
     Top = 488
     Bitmap = {
-      494C0101040050007C0040004000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104005000940040004000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000000100008000000001002000000000000000
       0200000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -49,7 +49,7 @@ void TfrmMain::call()
 	//callConvertHtmlToTxt();                                 //! Конвертирует все файлы html в pdf (не в txt)
 	//callConvertEpubToTxt();                                 //! Конвертирует все файлы epub в pdf (не в txt)
 	//callConvertWordToTxt();                                 //! Конвертирует все файлы word в pdf (не в txt)
-	//callConvertPdfToTxt(); 									//! Конвертировать все файлы pdf в txt (вызывать всегда в конце)
+	callConvertPdfToTxt(); 									//! Конвертировать все файлы pdf в txt (вызывать всегда в конце)
 
 	//! Удаляем файлы
 //	arv->deletePdf();

@@ -1,0 +1,16 @@
+PDF2Text Pilot
+Freeware version 
+Copyright © 2011 Two Pilots 
+All Rights Reserved
+LICENSE AGREEMENT 
+===========================================
+1. You should carefully read the following terms and conditions before using this software. Your use of this software indicates your acceptance of this license agreement and warranty. If you do not agree with the terms of this license, you must remove "PDF2Text Pilot" files from your storage devices and cease to use the product.
+2.You may not use, copy, emulate, clone, rent, lease, sell, modify, decompile, disassemble, otherwise reverse engineer, or transfer the licensed program, or any subset of the licensed program, except as provided for in this agreement. Any such unauthorised use shall result in immediate and automatic termination of this license and may result in criminal and/or civil prosecution.
+3. All copyrights to "PDF2Text Pilot" are exclusively owned by Two Pilots. All rights not expressly granted here are reserved by Two Pilots.
+4. The terms of this license, as well as the "PDF2Text Pilot" interface design are subjects of changes in future versions of "PDF2Text Pilot".
+5. "PDF2Text Pilot" may come packaged with additional Two Pilots products or third-party products. Please review the licensing terms of these individual products. 
+6. Installing and using "PDF2Text Pilot" signifies acceptance of these terms and conditions of the license.
+7. If you do not agree with the terms of this license or if the terms of this license contradict with your local laws, you must remove "PDF2Text Pilot" files from your storage devices and cease to use the product.
+8. THIS SOFTWARE IS DISTRIBUTED "AS IS". NO WARRANTY OF ANY KIND IS EXPRESSED OR IMPLIED. YOU USE IT AT YOUR OWN RISK. TWO PILOTS WILL NOT BE LIABLE FOR DATA LOSS, DAMAGES, LOSS OF PROFITS OR ANY OTHER KIND OF LOSS WHILE USING OR MISUSING THIS SOFTWARE.
+Two Pilots 
+http://www.colorpilot.com/

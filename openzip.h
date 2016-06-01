@@ -38,7 +38,6 @@ __published:	// IDE-managed Components
 	TToolBar *ToolBar1;
 	TToolButton *ToolButton1;
 	TToolButton *ToolButton2;
-	TToolButton *ToolButton3;
 	TImageList *ImageList1;
 	TToolButton *ToolButton4;
 	TToolButton *ToolButton5;

@@ -28,6 +28,15 @@ __published:	// IDE-managed Components
 	TLabel *Label3;
 	TButton *SevenZipButton;
 	TButton *WinrarButton;
+	TEdit *PDF2TXTEdit;
+	TEdit *WINRAREdit;
+	TEdit *SEVENZIPEdit;
+	TLabel *Label4;
+	TEdit *Edit1;
+	TEdit *Edit2;
+	TLabel *Label5;
+	TLabel *Label6;
+	TEdit *Edit3;
 	void __fastcall Pdf2TxtButtonClick(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
 	void __fastcall SevenZipButtonClick(TObject *Sender);
@@ -45,9 +54,10 @@ public:		// User declarations
 	AnsiString getPathTo7Zip(){ return PathTo7Zip; }
 	AnsiString getPathToWinrar(){ return PathToWinrar; }
 
+    void EditShow();
     void addToIni(AnsiString Unit,AnsiString Object, AnsiString value);
 	void createINI(AnsiString dir);
-	bool readIni();
+	void readIni();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TSetting *Setting;
